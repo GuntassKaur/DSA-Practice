@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        // read n
+        st = new StringTokenizer(br.readLine().trim());
+        int n = Integer.parseInt(st.nextToken());
+
+        long primary = 0L;
+        long secondary = 0L;
+
+        for (int i = 0; i < n; i++) {
+            // read row (robust to extra spaces)
+            st = new StringTokenizer(br.readLine().trim());
+            for (int j = 0; j < n; j++) {
+                long val = Long.parseLong(st.nextToken());
+                if (i == j) {
+                    primary += val;
+                }
+                if (i + j == n - 1) {
+                    secondary += val;
+                }
+            }
+        }
+
+        System.out.println(Math.abs(primary - secondary));
+    }
+}
