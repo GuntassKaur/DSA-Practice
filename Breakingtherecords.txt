@@ -1,0 +1,34 @@
+import java.util.*;
+
+public class Solution {
+
+    static int[] breakingRecords(int[] scores) {
+        int min = scores[0], max = scores[0];
+        int minBreaks = 0, maxBreaks = 0;
+
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] > max) {
+                max = scores[i];
+                maxBreaks++;
+            } else if (scores[i] < min) {
+                min = scores[i];
+                minBreaks++;
+            }
+        }
+
+        return new int[]{maxBreaks, minBreaks};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        int[] scores = new int[n];
+        
+        for (int i = 0; i < n; i++)
+            scores[i] = sc.nextInt();
+
+        int[] result = breakingRecords(scores);
+        System.out.println(result[0] + " " + result[1]);
+    }
+}
