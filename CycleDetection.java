@@ -13,9 +13,9 @@
 
 import java.io.*;
 import java.util.*;
-
 public class CycleDetection {
 
+    // Node structure for singly linked list
     static class SinglyLinkedListNode {
         int data;
         SinglyLinkedListNode next;
@@ -26,26 +26,29 @@ public class CycleDetection {
         }
     }
 
+    // Function to detect cycle in linked list
     static boolean hasCycle(SinglyLinkedListNode head) {
 
+        // Empty list or single node cannot have a cycle
         if (head == null || head.next == null) {
             return false;
         }
 
-        SinglyLinkedListNode slow = head;
-        SinglyLinkedListNode fast = head;
+        // Two pointers approach
+        SinglyLinkedListNode slow = head; // moves one step
+        SinglyLinkedListNode fast = head; // moves two steps
 
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
 
+            // If slow and fast meet, cycle exists
             if (slow == fast) {
                 return true;
             }
         }
 
+        // Fast reached null, so no cycle
         return false;
     }
-
-   
 }
